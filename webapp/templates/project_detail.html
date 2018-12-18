@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Проект{% endblock %}
+
+{% block content %}
+    <h1>{{ project.project }}</h1>
+    <p>{{ project.description }}</p>
+    <h5>Задачи</h5>
+    {% for issue in project.issues.all %}
+        <p>{{ issue.title }} ({{ issue.status }})</p>
+    {% endfor %}
+    <h5>Программисты</h5>
+    {% for programmer in project.programmers.all %}
+        <p>{{ programmer.user.first_name }} {{ programmer.user.last_name }} ({{ programmer.user.email }})</p>
+    {% endfor %}
+{% endblock %}
