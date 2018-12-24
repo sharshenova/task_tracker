@@ -27,8 +27,6 @@ class ProjectCreateView(CreateView):
     form_class = ProjectForm
     success_url = reverse_lazy('project_list')
 
-    # def get_success_url(self):
-    #     self.get_form()
 
 
 class ProjectUpdateView(UpdateView):
