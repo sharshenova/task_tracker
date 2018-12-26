@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 
-# Create your views here.
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
