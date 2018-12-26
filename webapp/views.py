@@ -3,6 +3,7 @@ from webapp.models import Project
 from webapp.forms import ProjectSearchForm, ProjectForm
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
+from django.http import HttpResponseForbidden
 
 
 class ProjectListView(ListView, FormView):
@@ -15,6 +16,12 @@ class ProjectListView(ListView, FormView):
     #         return redirect('accounts:login')
     #     else:
     #         return super().dispatch(request, *args, **kwargs)
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.has_perm('webapp.project_view'):
+            return HttpResponseForbidden()
+        else:
+            return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         project_name = self.request.GET.get('project_name')
