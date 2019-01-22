@@ -18,6 +18,12 @@ from django.urls import path, include
 from webapp.views import ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView
 
 
+
+
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ProjectListView.as_view(), name='project_list'),
